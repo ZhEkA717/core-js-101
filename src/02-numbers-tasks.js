@@ -51,18 +51,19 @@ function getCircleCircumference(radius) {
  *  10, 0  => 5
  *  -3, 3  => 0
  */
-function getAverage(value1, value2) {
-  if (value1 + value2 === 0) {
-    return 0;
-  }
-  if (value1 === Number.MAX_VALUE || value2 === Number.MAX_VALUE) {
-    const r = Math.abs(value1 - value2);
-    if (value1 > value2) {
-      return value2 + r / 2;
-    }
-    return value1 + r / 2;
-  }
-  return 0;
+function getAverage(/* value1, value2 */) {
+  // if (value1 + value2 === 0) {
+  //   return 0;
+  // }
+  // if (value1 === Number.MAX_VALUE || value2 === Number.MAX_VALUE) {
+  //   const r = Math.abs(value1 - value2);
+  //   if (value1 > value2) {
+  //     return value2 + r / 2;
+  //   }
+  //   return value1 + r / 2;
+  // }
+  // return 0;
+  throw new Error('Not implemented');
 }
 
 /**
