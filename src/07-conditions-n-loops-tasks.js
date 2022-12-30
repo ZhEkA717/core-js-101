@@ -421,6 +421,7 @@ function toNaryString(num, n) {
  *   ['/web/favicon.ico', '/web-scripts/dump', '/verbalizer/logs'] => '/'
  */
 function getCommonDirectoryPath(/* pathes */) {
+  // const findDuplicates = (arr) => arr.filter((item, index) => arr.indexOf(item) !== index);
   throw new Error('Not implemented');
 }
 

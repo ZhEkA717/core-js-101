@@ -551,8 +551,19 @@ function distinct(arr) {
  *    "Poland" => ["Lodz"]
  *   }
  */
-function group(/* array, keySelector, valueSelector */) {
-  throw new Error('Not implemented');
+function group(array, keySelector, valueSelector) {
+  const resMap = new Map();
+  array.map((item) => {
+    if (resMap.has(keySelector(item))) {
+      const value = resMap.get(keySelector(item));
+      value.push(valueSelector(item));
+      resMap.set(keySelector(item), value);
+    } else {
+      resMap.set(keySelector(item), [valueSelector(item)]);
+    }
+    return item;
+  });
+  return resMap;
 }
 
 
@@ -587,10 +598,16 @@ function selectMany(arr, childrenSelector) {
  *   ['one','two','three'], [2]       => 'three'  (arr[2])
  *   [[[ 1, 2, 3]]], [ 0, 0, 1 ]      => 2        (arr[0][0][1])
  */
-function getElementByIndexes(/* arr, indexes */) {
-  throw new Error('Not implemented');
+function getElementByIndexes(arr, indexes) {
+  let res = [...arr];
+  indexes.map((item) => {
+    res = res[item];
+    return item;
+  });
+  return res;
 }
 
+// console.log(getElementByIndexes(['one','two','three'], [2]));
 /**
  * Swaps the head and tail of the specified array:
  * the head (first half) of array move to the end, the tail (last half) move to the start.
@@ -609,15 +626,20 @@ function getElementByIndexes(/* arr, indexes */) {
  *   [ 1, 2, 3, 4, 5, 6, 7, 8 ]   =>  [ 5, 6, 7, 8, 1, 2, 3, 4 ]
  *
  */
-function swapHeadAndTail(/* arr */) {
-  // if (arr.length === 2) {
-  //   return arr.reverse();
-  // }
+function swapHeadAndTail(arr) {
+  if (arr.length === 2) {
+    return arr.reverse();
+  }
+  const half = Math.floor(arr.length / 2);
+  const fHalf = arr.filter((item, i) => i < half);
+  const avr = arr.filter((item, i) => i === half);
+  const sHalf = arr.reverse().filter((item, i) => i < half).reverse();
 
-  // if (arr.length % 2) {
-  //   const half = Math.floor(arr.length / 2);
-  // }
-  throw new Error('Not implemented');
+  if (arr.length % 2) {
+    return [...sHalf, ...avr, ...fHalf];
+  }
+
+  return [...sHalf, ...fHalf];
 }
 
 module.exports = {

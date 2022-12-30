@@ -34,8 +34,8 @@ function parseDataFromRfc2822(value) {
  *    '2016-01-19T16:07:37+00:00'    => Date()
  *    '2016-01-19T08:07:37Z' => Date()
  */
-function parseDataFromIso8601(/* value */) {
-  throw new Error('Not implemented');
+function parseDataFromIso8601(value) {
+  return new Date(value);
 }
 
 
@@ -106,14 +106,15 @@ function timeSpanToString(startDate, endDate) {
  *    Date.UTC(2016,3,5,18, 0) => Math.PI
  *    Date.UTC(2016,3,5,21, 0) => Math.PI/2
  */
-function angleBetweenClockHands(date) {
-  const minute = date.getUTCMinutes();
-  const hour = date.getUTCHours();
+function angleBetweenClockHands(/* date */) {
+  // const minute = date.getUTCMinutes();
+  // const hour = date.getUTCHours();
 
-  const positionMinuteArrow = minute * 6;
-  const positionHourArrow = hour * 30 + (minute * 60) * (1 / 120);
-  const angle = Math.abs(positionHourArrow - positionMinuteArrow) * (Math.PI / 180);
-  return angle > Math.PI ? 2 * Math.PI - angle : angle;
+  // const positionMinuteArrow = minute * 6;
+  // const positionHourArrow = hour * 30 + (minute * 60) * (1 / 120);
+  // const angle = Math.abs(positionHourArrow - positionMinuteArrow) * (Math.PI / 180);
+  // return angle > Math.PI ? 2 * Math.PI - angle : angle;
+  throw new Error('Not implemented');
 }
 
 module.exports = {
