@@ -420,9 +420,21 @@ function toNaryString(num, n) {
  *   ['/web/assets/style.css', '/.bin/mocha',  '/read.me'] => '/'
  *   ['/web/favicon.ico', '/web-scripts/dump', '/verbalizer/logs'] => '/'
  */
-function getCommonDirectoryPath(/* pathes */) {
-  // const findDuplicates = (arr) => arr.filter((item, index) => arr.indexOf(item) !== index);
-  throw new Error('Not implemented');
+function getCommonDirectoryPath(pathes) {
+  const len = pathes[0].length;
+  let res = '';
+  for (let i = 0; i < len; i += 1) {
+    let common = true;
+    for (let j = 0; j < pathes.length; j += 1) {
+      if (pathes[0].substring(0, i) !== pathes[j].substring(0, i) || pathes[0][i - 1] !== '/') {
+        common = false;
+      }
+    }
+    if (common) {
+      res = pathes[0].substring(0, i);
+    }
+  }
+  return res;
 }
 
 
